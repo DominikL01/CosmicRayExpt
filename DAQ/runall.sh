@@ -7,15 +7,19 @@
 
 for thres in {800..100..100}
 do
-    acquire.py -t 100 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan0.txt -0 $thres -1 100 -2 100 -3 100 -e 0x1
-    acquire.py -t 100 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan1.txt -0 100 -1 $thres -2 100 -3 100 -e 0x2
-    acquire.py -t 100 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan2.txt -0 100 -1 100 -2 $thres -3 100 -e 0x4
-    acquire.py -t 100 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan3.txt -0 100 -1 100 -2 100 -3 $thres -e 0x8
-
+    acquire.py -t 5 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan0.txt -0 $thres -1 100 -2 100 -3 100 -e 0x1
     convert.py thresh"$thres"_chan0.txt thresh"$thres"_chan0.dat
+    
+    acquire.py -t 5 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan1.txt -0 100 -1 $thres -2 100 -3 100 -e 0x2
     convert.py thresh"$thres"_chan1.txt thresh"$thres"_chan1.dat
+    
+    acquire.py -t 5 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan2.txt -0 100 -1 100 -2 $thres -3 100 -e 0x4
     convert.py thresh"$thres"_chan2.txt thresh"$thres"_chan2.dat
+    
+    acquire.py -t 5 -s ~/code/CosmicRayExpt/DAQ/daq.cfg -o thresh"$thres"_chan3.txt -0 100 -1 100 -2 100 -3 $thres -e 0x8
     convert.py thresh"$thres"_chan3.txt thresh"$thres"_chan3.dat
+    
+ 
 
 
 done
